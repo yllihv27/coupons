@@ -35,7 +35,7 @@ module Coupons
       @paginator =  if pagination_adapter == :kaminari
                       -> relation, page { relation.page(page).per(Coupons.configuration.per_page) }
                     else
-                      -> relation, page { relation.paginate(page: page, size: Coupons.configuration.per_page) }
+                      -> relation, page { relation.paginate(page: page, per_page: Coupons.configuration.per_page) }
                     end
 
       @authorizer = proc do |controller|
